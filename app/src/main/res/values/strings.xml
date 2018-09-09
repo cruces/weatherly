@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Weatherly</string>
+    <string name="celsius">°C</string>
+    <string name="current_details">Current details</string>
+    <string name="pressure">Pressure</string>
+    <string name="humidity">Humidity</string>
+    <string name="wind">Wind</string>
+    <string name="cloudiness">Cloudiness</string>
+</resources>

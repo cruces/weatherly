@@ -11,6 +11,26 @@
         <item name="android:textColor">@color/color_white</item>
     </style>
 
+    <style name="AppTheme.Day" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/day</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:textColor">@color/color_white</item>
+    </style>
+
+    <style name="AppTheme.Night" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/night</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:textColor">@color/color_white</item>
+    </style>
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />

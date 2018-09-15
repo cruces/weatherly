@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import com.weatherly.weatherly.R;
 import com.weatherly.weatherly.application.MyApplication;
+import com.weatherly.weatherly.modules.common.openweathermap.ThemeUtils;
 import com.weatherly.weatherly.modules.forecast.core.presenter.ForecastPresenter;
 import com.weatherly.weatherly.modules.forecast.core.view.ForecastView;
 
@@ -23,6 +24,7 @@ public class ForecastActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         MyApplication.getInjector().inject(this);
+        ThemeUtils.setAppTheme(this);
 
         setContentView(view.getView());
         presenter.onCreate();

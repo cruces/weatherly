@@ -17,7 +17,4 @@ public interface MainScreenView {
     Toolbar getToolbar();
 
     void setStatusBarColor(Activity activity);
-
-    Drawable getWeatherIcon(String code);
-
 }

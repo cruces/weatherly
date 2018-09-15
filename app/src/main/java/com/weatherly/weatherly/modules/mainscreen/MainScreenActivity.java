@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.weatherly.weatherly.application.MyApplication;
+import com.weatherly.weatherly.modules.common.openweathermap.ThemeUtils;
 import com.weatherly.weatherly.modules.mainscreen.core.presenter.MainScreenPresenter;
 import com.weatherly.weatherly.modules.mainscreen.core.view.MainScreenView;
 
@@ -22,6 +23,7 @@ public class MainScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         MyApplication.getInjector().inject(this);
+        ThemeUtils.setAppTheme(this);
 
         setContentView(view.getView());
 

@@ -14,10 +14,9 @@ public interface WeatherRequest {
                                             @Query("units") String value,
                                             @Query("appid") String key);
 
-    @GET("forecast/daily")
-    Call<ForecastGeneralModel> getForecastNextWeeks(@Query("q") String city,
-                                                    @Query("units") String value,
-                                                    @Query("cnt") String count,
-                                                    @Query("appid") String key);
+    @GET("forecast")
+    Call<ForecastGeneralModel> getForecastNextDays(@Query("q") String city,
+                                                   @Query("units") String value,
+                                                   @Query("appid") String key);
 
 }

@@ -6,6 +6,7 @@ public class ForecastGeneralModel {
     private String cod;
     private int cnt;
     private List<WeatherForecastModel> list;
+    private CityModel city;
 
     public String getCod() {
         return cod;
@@ -17,5 +18,9 @@ public class ForecastGeneralModel {
 
     public List<WeatherForecastModel> getList() {
         return list;
+    }
+
+    public CityModel getCity() {
+        return city;
     }
 }

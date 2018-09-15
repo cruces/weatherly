@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.weatherly.weatherly.R;
+import com.weatherly.weatherly.modules.common.openweathermap.IconUtils;
 import com.weatherly.weatherly.modules.mainscreen.core.entities.WeatherDataModel;
 
 public class DefaultMainScreenView extends FrameLayout implements MainScreenView {
@@ -58,7 +59,7 @@ public class DefaultMainScreenView extends FrameLayout implements MainScreenView
 
     @Override
     public void setUpWeather(WeatherDataModel weather) {
-        Drawable icon = getWeatherIcon(weather.getIconUrl());
+        Drawable icon = IconUtils.getWeatherIcon(context, weather.getIconUrl());
         String desc = weather.getDescription();
         String upperDescription = desc.substring(0, 1).toUpperCase() + desc.substring(1);
         description.setText(upperDescription);
@@ -68,12 +69,6 @@ public class DefaultMainScreenView extends FrameLayout implements MainScreenView
         humidity.setText(weather.getHumidity());
         wind.setText(weather.getWind());
         cloudiness.setText(weather.getClouds());
-
-        if (weather.getHour().equals("day"))
-            container.setBackground(ContextCompat.getDrawable(context, R.drawable.day));
-        else
-            container.setBackground(ContextCompat.getDrawable(context, R.drawable.night));
-
         Glide.with(this).load(icon).into(weatherIcon);
     }
 
@@ -98,68 +93,5 @@ public class DefaultMainScreenView extends FrameLayout implements MainScreenView
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.setStatusBarColor(activity.getResources().getColor(R.color.color_transparent_gray));
-    }
-
-    @Override
-    public Drawable getWeatherIcon(String code) {
-
-        switch (code) {
-            case "04d":
-                return ContextCompat.getDrawable(context, R.mipmap.cloudyn);
-
-            case "04n":
-                return ContextCompat.getDrawable(context, R.mipmap.cloudyn);
-
-            case "01d":
-                return ContextCompat.getDrawable(context, R.mipmap.cleard);
-
-            case "01n":
-                return ContextCompat.getDrawable(context, R.mipmap.clearn);
-
-            case "02d":
-                return ContextCompat.getDrawable(context, R.mipmap.fewcloudd);
-
-            case "02n":
-                return ContextCompat.getDrawable(context, R.mipmap.fewcloudn);
-
-            case "03d":
-                return ContextCompat.getDrawable(context, R.mipmap.scatteredd);
-
-            case "03n":
-                return ContextCompat.getDrawable(context, R.mipmap.scatteredd);
-
-            case "09d":
-                return ContextCompat.getDrawable(context, R.mipmap.showerd);
-
-            case "09n":
-                return ContextCompat.getDrawable(context, R.mipmap.showerd);
-
-            case "10d":
-                return ContextCompat.getDrawable(context, R.mipmap.raind);
-
-            case "10n":
-                return ContextCompat.getDrawable(context, R.mipmap.rainn);
-
-            case "11d":
-                return ContextCompat.getDrawable(context, R.mipmap.thunderd);
-
-            case "11n":
-                return ContextCompat.getDrawable(context, R.mipmap.thunderd);
-
-            case "12d":
-                return ContextCompat.getDrawable(context, R.mipmap.snowd);
-
-            case "12n":
-                return ContextCompat.getDrawable(context, R.mipmap.snowd);
-
-            case "13d":
-                return ContextCompat.getDrawable(context, R.mipmap.mistd);
-
-            case "13n":
-                return ContextCompat.getDrawable(context, R.mipmap.mistd);
-
-            default:
-                return ContextCompat.getDrawable(context, R.mipmap.cloudyn);
-        }
     }
 }

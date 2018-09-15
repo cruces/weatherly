@@ -3,6 +3,7 @@ package com.weatherly.weatherly.modules.mainscreen.core.interactor;
 import com.weatherly.weatherly.application.builder.MyApplicationModule;
 import com.weatherly.weatherly.modules.common.WeatherRequest;
 import com.weatherly.weatherly.modules.common.entities.WeatherGeneralModel;
+import com.weatherly.weatherly.modules.common.openweathermap.TemperatureUtils;
 import com.weatherly.weatherly.modules.mainscreen.core.entities.WeatherDataModel;
 
 import java.util.Calendar;
@@ -28,15 +29,11 @@ public class DefaultMainScreenInteractor implements MainScreenInteractor {
             @Override
             public void onResponse(Call<WeatherGeneralModel> call, Response<WeatherGeneralModel> response) {
                 if (response.body() != null) {
-                    Calendar rightNow = Calendar.getInstance();
-                    int currentHour = rightNow.get(Calendar.HOUR_OF_DAY);
-                    String hour = (currentHour > 4 && currentHour < 18) ? "day" : "night";
 
                     WeatherGeneralModel model = response.body();
                     WeatherDataModel dataModel = new WeatherDataModel(model.getName(),
-                            parseTemperature(model.getMain().getTemp()),
+                            TemperatureUtils.parseTemperature(model.getMain().getTemp()),
                             model.getWeather().get(0).getIcon(),
-                            hour,
                             model.getMain().getPressure() + " hpa",
                             model.getMain().getHumidity() + "%",
                             model.getWind().getSpeed() + " m/s",
@@ -56,12 +53,6 @@ public class DefaultMainScreenInteractor implements MainScreenInteractor {
             }
         });
 
-    }
-
-    @Override
-    public String parseTemperature(String temp) {
-        double doubleTemp = Double.parseDouble(temp);
-        return String.valueOf((int) doubleTemp);
     }
 
     @Override

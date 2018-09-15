@@ -4,7 +4,6 @@ public class WeatherDataModel {
     private String cityName;
     private String weatherTemp;
     private String iconUrl;
-    private String hour;
     private String pressure;
     private String humidity;
     private String wind;
@@ -13,13 +12,12 @@ public class WeatherDataModel {
     private String clouds;
 
     public WeatherDataModel(String cityName, String weatherTemp,
-                            String iconUrl, String hour, String pressure,
+                            String iconUrl, String pressure,
                             String humidity, String wind, String description,
                             String country, String clouds) {
         this.cityName = cityName;
         this.weatherTemp = weatherTemp;
         this.iconUrl = iconUrl;
-        this.hour = hour;
         this.pressure = pressure;
         this.humidity = humidity;
         this.wind = wind;
@@ -39,11 +37,7 @@ public class WeatherDataModel {
     public String getIconUrl() {
         return iconUrl;
     }
-
-    public String getHour() {
-        return hour;
-    }
-
+    
     public String getPressure() {
         return pressure;
     }

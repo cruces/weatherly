@@ -6,5 +6,6 @@
     <string name="humidity">Humidity</string>
     <string name="wind">Wind</string>
     <string name="cloudiness">Cloudiness</string>
-    <string name="day_forecast">16 day weather forecast</string>
+    <string name="day_forecast">5 day / 3 hour forecast</string>
+    <string name="extended_forecast">Extended forecast</string>
 </resources>

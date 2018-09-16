@@ -28,5 +28,8 @@ public class ForecastActivity extends AppCompatActivity {
 
         setContentView(view.getView());
         presenter.onCreate();
+
+        setSupportActionBar(view.getToolbar());
+        view.setStatusBarColor(this);
     }
 }

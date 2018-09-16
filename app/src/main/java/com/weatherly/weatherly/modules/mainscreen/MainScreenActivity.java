@@ -17,7 +17,6 @@ public class MainScreenActivity extends AppCompatActivity {
     @Inject
     public MainScreenView view;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

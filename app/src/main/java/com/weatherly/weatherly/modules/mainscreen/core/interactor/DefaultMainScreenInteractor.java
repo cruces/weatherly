@@ -6,8 +6,6 @@ import com.weatherly.weatherly.modules.common.entities.WeatherGeneralModel;
 import com.weatherly.weatherly.modules.common.openweathermap.TemperatureUtils;
 import com.weatherly.weatherly.modules.mainscreen.core.entities.WeatherDataModel;
 
-import java.util.Calendar;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

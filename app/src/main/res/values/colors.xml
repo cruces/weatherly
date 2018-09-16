@@ -7,4 +7,13 @@
     <color name="color_white">#FFFFFF</color>
     <color name="color_transparent_gray">#00252121</color>
     <color name="transparent">#00000000</color>
+
+    <color name="colorPrimaryDay">#FF9800</color>
+    <color name="colorPrimaryDarkDay">#F57C00</color>
+    <color name="colorAccentDay">#FFEB3B</color>
+
+    <color name="colorPrimaryNight">#455A64</color>
+    <color name="colorPrimaryDarkNight">#607D8B</color>
+    <color name="colorAccentNight">#9E9E9E</color>
+
 </resources>

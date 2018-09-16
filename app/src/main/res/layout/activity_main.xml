@@ -154,14 +154,18 @@
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/button_forecast"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="More" />
-
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/button_forecast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="30dp"
+        android:gravity="center"
+        android:text="@string/extended_forecast"
+        android:textSize="16sp" />
 
     <include layout="@layout/app_bar" />
 

@@ -37,12 +37,10 @@ public class DefaultForecastInteractor implements ForecastInteractor {
                 if (response.body() != null) {
 
                     ForecastGeneralModel model = response.body();
-
                     ArrayList<ForecastDataListModel> listForecast = new ArrayList<>();
 
                     for (int i = 0; i < model.getList().size(); i++) {
                         WeatherForecastModel forecastData = model.getList().get(i);
-
                         String dataDate = model.getList().get(i).getDt_txt();
 
                         listForecast.add(new ForecastDataListModel(

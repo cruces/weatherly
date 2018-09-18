@@ -8,4 +8,5 @@
     <string name="cloudiness">Cloudiness</string>
     <string name="day_forecast">5 day / 3 hour forecast</string>
     <string name="extended_forecast">Extended forecast</string>
+    <string name="about">About</string>
 </resources>

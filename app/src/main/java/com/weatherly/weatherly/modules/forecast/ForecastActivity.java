@@ -3,9 +3,8 @@ package com.weatherly.weatherly.modules.forecast;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.weatherly.weatherly.R;
 import com.weatherly.weatherly.application.MyApplication;
-import com.weatherly.weatherly.modules.common.openweathermap.ThemeUtils;
+import com.weatherly.weatherly.modules.common.ThemeUtils;
 import com.weatherly.weatherly.modules.forecast.core.presenter.ForecastPresenter;
 import com.weatherly.weatherly.modules.forecast.core.view.ForecastView;
 
@@ -23,8 +22,8 @@ public class ForecastActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        MyApplication.getInjector().inject(this);
         ThemeUtils.setAppTheme(this);
+        MyApplication.getInjector().inject(this);
 
         setContentView(view.getView());
         presenter.onCreate();

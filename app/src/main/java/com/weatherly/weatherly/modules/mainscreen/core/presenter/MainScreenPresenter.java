@@ -32,11 +32,12 @@ public class MainScreenPresenter implements MainScreenViewOutput, MainScreenInte
     public void onGetWeatherByCityNameSuccess(WeatherDataModel weather) {
         weatherGeneralModel = weather;
         view.setUpWeather(weather);
+        view.setProgressBar(false);
     }
 
     @Override
     public void onGetWeatherByCityNameError(String e) {
-//        view.setUpWeatherError(e);
+        view.getToast("Sorry, an error occurred");
     }
 
     @Override

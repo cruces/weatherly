@@ -1,8 +1,8 @@
 package com.weatherly.weatherly.modules.mainscreen.core.view;
 
 import android.app.Activity;
-import android.graphics.drawable.Drawable;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.View;
 
 import com.weatherly.weatherly.modules.mainscreen.core.entities.WeatherDataModel;
@@ -17,4 +17,10 @@ public interface MainScreenView {
     Toolbar getToolbar();
 
     void setStatusBarColor(Activity activity);
+
+    void setProgressBar(boolean status);
+
+    void setMainMenu(Activity activity, Menu menu);
+
+    void getToast(String message);
 }

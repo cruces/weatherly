@@ -2,9 +2,10 @@ package com.weatherly.weatherly.modules.mainscreen;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
 
 import com.weatherly.weatherly.application.MyApplication;
-import com.weatherly.weatherly.modules.common.openweathermap.ThemeUtils;
+import com.weatherly.weatherly.modules.common.ThemeUtils;
 import com.weatherly.weatherly.modules.mainscreen.core.presenter.MainScreenPresenter;
 import com.weatherly.weatherly.modules.mainscreen.core.view.MainScreenView;
 
@@ -21,8 +22,8 @@ public class MainScreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        MyApplication.getInjector().inject(this);
         ThemeUtils.setAppTheme(this);
+        MyApplication.getInjector().inject(this);
 
         setContentView(view.getView());
 
@@ -30,5 +31,11 @@ public class MainScreenActivity extends AppCompatActivity {
         setSupportActionBar(view.getToolbar());
         view.setStatusBarColor(this);
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        view.setMainMenu(this, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 }

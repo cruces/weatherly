@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.weatherly.weatherly.R;
 import com.weatherly.weatherly.modules.forecast.core.entities.ForecastDataListModel;
@@ -20,19 +22,26 @@ import java.util.ArrayList;
 
 public class DefaultForecastView extends FrameLayout implements ForecastView {
     private RecyclerView recyclerViewForecast;
-    private ForecastListAdapter forecastListAdapter;
     private ForecastViewOutput callbacks;
     private Toolbar toolbar;
+    private ProgressBar progressBar;
+    private View overlay;
+    private Context context;
 
     public DefaultForecastView(@NonNull Context context) {
         super(context);
         inflate(context, R.layout.activity_forecast, this);
+        this.context = context;
+
         recyclerViewForecast = findViewById(R.id.recycler_forecast_list);
         toolbar = findViewById(R.id.toolbar);
+        progressBar = findViewById(R.id.progress_bar);
+        overlay = findViewById(R.id.overlay_view);
     }
 
     @Override
     public void setUpForecastList(ArrayList<ForecastDataListModel> list) {
+        ForecastListAdapter forecastListAdapter;
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerViewForecast.setLayoutManager(layoutManager);
         forecastListAdapter = new ForecastListAdapter(list);
@@ -65,5 +74,21 @@ public class DefaultForecastView extends FrameLayout implements ForecastView {
     @Override
     public void setUpToolbar(ForecastDataModel forecast) {
         toolbar.setTitle(forecast.getCity() + ", " + forecast.getCountry());
+    }
+
+    @Override
+    public void setProgressBar(boolean status) {
+        if (status) {
+            progressBar.setVisibility(View.VISIBLE);
+            overlay.setVisibility(View.VISIBLE);
+        } else {
+            progressBar.setVisibility(View.GONE);
+            overlay.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
+    public void getToast(String message) {
+        Toast.makeText(context, message, Toast.LENGTH_LONG).show();
     }
 }

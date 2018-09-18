@@ -21,4 +21,8 @@ public interface ForecastView {
     void setStatusBarColor(Activity activity);
 
     void setUpToolbar(ForecastDataModel forecast);
+
+    void setProgressBar(boolean status);
+
+    void getToast(String message);
 }

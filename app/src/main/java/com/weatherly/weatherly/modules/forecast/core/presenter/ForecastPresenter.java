@@ -26,6 +26,7 @@ public class ForecastPresenter implements ForecastInteractorOutput {
     public void onGetForecastListSuccess(ForecastDataModel forecast) {
         view.setUpToolbar(forecast);
         view.setUpForecastList((ArrayList<ForecastDataListModel>) forecast.getList());
+        view.setProgressBar(false);
     }
 
     @Override

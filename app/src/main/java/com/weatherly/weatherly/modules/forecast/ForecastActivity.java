@@ -29,6 +29,8 @@ public class ForecastActivity extends AppCompatActivity {
         presenter.onCreate();
 
         setSupportActionBar(view.getToolbar());
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         view.setStatusBarColor(this);
     }
 }

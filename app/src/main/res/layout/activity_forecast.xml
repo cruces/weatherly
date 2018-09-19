@@ -6,24 +6,24 @@
     android:fitsSystemWindows="true"
     tools:context=".modules.forecast.ForecastActivity">
 
-    <ScrollView
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginTop="60dp">
 
-        <LinearLayout
+        <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler_forecast_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 
-        </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
 
-    </ScrollView>
+    </android.support.v4.widget.SwipeRefreshLayout>
 
     <View
         android:id="@+id/overlay_view"

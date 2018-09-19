@@ -1,7 +1,5 @@
 package com.weatherly.weatherly.modules.forecast.core.interactor;
 
-import android.util.Log;
-
 import com.weatherly.weatherly.application.builder.MyApplicationModule;
 import com.weatherly.weatherly.modules.common.WeatherRequest;
 import com.weatherly.weatherly.modules.common.entities.ForecastGeneralModel;
@@ -56,15 +54,12 @@ public class DefaultForecastInteractor implements ForecastInteractor {
                     callbacks.onGetForecastListSuccess(dataModel);
 
                 } else {
-                    Log.d("weathertag", "error null");
                     callbacks.onGetForecastListError("error");
                 }
             }
 
             @Override
             public void onFailure(Call<ForecastGeneralModel> call, Throwable t) {
-                Log.d("weathertag", "error consulta " + t.getMessage());
-
                 callbacks.onGetForecastListError("error");
             }
         });

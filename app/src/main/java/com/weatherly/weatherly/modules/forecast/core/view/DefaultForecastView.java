@@ -3,6 +3,7 @@ package com.weatherly.weatherly.modules.forecast.core.view;
 import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -27,6 +28,7 @@ public class DefaultForecastView extends FrameLayout implements ForecastView {
     private ProgressBar progressBar;
     private View overlay;
     private Context context;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     public DefaultForecastView(@NonNull Context context) {
         super(context);
@@ -37,6 +39,15 @@ public class DefaultForecastView extends FrameLayout implements ForecastView {
         toolbar = findViewById(R.id.toolbar);
         progressBar = findViewById(R.id.progress_bar);
         overlay = findViewById(R.id.overlay_view);
+        swipeRefreshLayout = findViewById(R.id.swipe);
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeRefreshLayout.setRefreshing(false);
+                callbacks.onSwipeRefresh();
+            }
+        });
     }
 
     @Override
@@ -46,6 +57,7 @@ public class DefaultForecastView extends FrameLayout implements ForecastView {
         recyclerViewForecast.setLayoutManager(layoutManager);
         forecastListAdapter = new ForecastListAdapter(list);
         recyclerViewForecast.setAdapter(forecastListAdapter);
+        recyclerViewForecast.setNestedScrollingEnabled(false);
     }
 
     @Override

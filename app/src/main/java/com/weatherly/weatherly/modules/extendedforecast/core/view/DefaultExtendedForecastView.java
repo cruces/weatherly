@@ -1,27 +1,26 @@
-package com.weatherly.weatherly.modules.todayforecast.core.view;
+package com.weatherly.weatherly.modules.extendedforecast.core.view;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 
 import com.weatherly.weatherly.R;
+import com.weatherly.weatherly.modules.extendedforecast.ExtendedForecastFragment;
 import com.weatherly.weatherly.modules.forecast.core.entities.ForecastDataListModel;
-import com.weatherly.weatherly.modules.todayforecast.TodayForecastFragment;
-import com.weatherly.weatherly.modules.todayforecast.core.view.recyclerview.ForecastListAdapter;
+import com.weatherly.weatherly.modules.extendedforecast.core.view.recyclerview.ForecastListAdapter;
 
 import java.util.ArrayList;
 
-public class DefaultTodayForecastView extends FrameLayout implements TodayForecastView {
+public class DefaultExtendedForecastView extends FrameLayout implements ExtendedForecastView {
     private RecyclerView recyclerViewForecast;
-    private TodayForecastFragment.OnSwipeToRefresh swipeToRefresh;
+    private ExtendedForecastFragment.OnSwipeToRefresh swipeToRefresh;
     private SwipeRefreshLayout swipeRefreshLayout;
 
-    public DefaultTodayForecastView(@NonNull Context context) {
+    public DefaultExtendedForecastView(@NonNull Context context) {
         super(context);
         inflate(context, R.layout.fragment_today_forecast, this);
 
@@ -46,8 +45,6 @@ public class DefaultTodayForecastView extends FrameLayout implements TodayForeca
 
     @Override
     public void setUpForecastList(ArrayList<ForecastDataListModel> list) {
-        Log.d("dume", "la list en el fragment recycler" + list.size());
-
         ForecastListAdapter forecastListAdapter;
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerViewForecast.setLayoutManager(layoutManager);
@@ -57,7 +54,7 @@ public class DefaultTodayForecastView extends FrameLayout implements TodayForeca
     }
 
     @Override
-    public void setOnSwipeToRefresh(TodayForecastFragment.OnSwipeToRefresh swipeToRefresh) {
+    public void setOnSwipeToRefresh(ExtendedForecastFragment.OnSwipeToRefresh swipeToRefresh) {
         this.swipeToRefresh = swipeToRefresh;
     }
 }

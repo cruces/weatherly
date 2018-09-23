@@ -5,12 +5,8 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -22,8 +18,7 @@ import com.weatherly.weatherly.R;
 import com.weatherly.weatherly.modules.forecast.core.entities.ForecastDataListModel;
 import com.weatherly.weatherly.modules.forecast.core.entities.ForecastDataModel;
 import com.weatherly.weatherly.modules.forecast.core.view.adapters.ForecastPagerAdapter;
-import com.weatherly.weatherly.modules.todayforecast.TodayForecastFragment;
-import com.weatherly.weatherly.modules.todayforecast.core.view.recyclerview.ForecastListAdapter;
+import com.weatherly.weatherly.modules.extendedforecast.ExtendedForecastFragment;
 
 import java.util.ArrayList;
 
@@ -54,10 +49,10 @@ public class DefaultForecastView extends FrameLayout implements ForecastView {
     @Override
     public void setUpTabs(AppCompatActivity activity) {
         tabLayout.addTab(tabLayout.newTab().setText("Today"));
-        tabLayout.addTab(tabLayout.newTab().setText("Tomorrow"));
+        tabLayout.addTab(tabLayout.newTab().setText("Next days"));
 
         adapter = new ForecastPagerAdapter(
-                activity.getSupportFragmentManager(), new TodayForecastFragment.OnSwipeToRefresh() {
+                activity.getSupportFragmentManager(), new ExtendedForecastFragment.OnSwipeToRefresh() {
             @Override
             public void onSwiped() {
                 callbacks.onSwipeRefresh();

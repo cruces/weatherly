@@ -5,23 +5,23 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.weatherly.weatherly.modules.extendedforecast.ExtendedForecastFragment;
 import com.weatherly.weatherly.modules.forecast.core.entities.ForecastDataListModel;
-import com.weatherly.weatherly.modules.todayforecast.TodayForecastFragment;
 
 import java.util.ArrayList;
 
 public class ForecastPagerAdapter extends FragmentStatePagerAdapter {
     private ArrayList<ArrayList<ForecastDataListModel>> data = new ArrayList<>();
-    private TodayForecastFragment.OnSwipeToRefresh swipeToRefresh;
+    private ExtendedForecastFragment.OnSwipeToRefresh swipeToRefresh;
 
-    public ForecastPagerAdapter(FragmentManager fm, TodayForecastFragment.OnSwipeToRefresh swipeToRefresh) {
+    public ForecastPagerAdapter(FragmentManager fm, ExtendedForecastFragment.OnSwipeToRefresh swipeToRefresh) {
         super(fm);
         this.swipeToRefresh = swipeToRefresh;
     }
 
     @Override
     public Fragment getItem(int position) {
-        TodayForecastFragment fragment = TodayForecastFragment.newInstance(data.get(position));
+        ExtendedForecastFragment fragment = ExtendedForecastFragment.newInstance(data.get(position));
         fragment.setOnSwipeToRefresh(swipeToRefresh);
         return fragment;
     }

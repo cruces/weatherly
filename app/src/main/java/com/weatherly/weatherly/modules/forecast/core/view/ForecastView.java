@@ -1,6 +1,8 @@
 package com.weatherly.weatherly.modules.forecast.core.view;
 
 import android.app.Activity;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
@@ -11,8 +13,6 @@ import java.util.ArrayList;
 
 public interface ForecastView {
     View getView();
-
-    void setUpForecastList(ArrayList<ForecastDataListModel> list);
 
     void setCallbacks(ForecastViewOutput callback);
 
@@ -25,4 +25,8 @@ public interface ForecastView {
     void setProgressBar(boolean status);
 
     void getToast(String message);
+
+    void setUpTabs(AppCompatActivity activity);
+
+    void updateViewPager(ArrayList<ArrayList<ForecastDataListModel>> list);
 }

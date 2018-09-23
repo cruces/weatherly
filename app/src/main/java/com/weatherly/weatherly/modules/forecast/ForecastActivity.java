@@ -23,10 +23,10 @@ public class ForecastActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         ThemeUtils.setAppTheme(this);
-        MyApplication.getInjector().inject(this);
+        MyApplication.getInjector().injectForecast(this);
 
         setContentView(view.getView());
-        presenter.onCreate();
+        presenter.onCreate(this);
 
         setSupportActionBar(view.getToolbar());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

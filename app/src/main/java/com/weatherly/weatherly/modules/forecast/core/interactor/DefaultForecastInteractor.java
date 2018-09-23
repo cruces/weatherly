@@ -49,9 +49,13 @@ public class DefaultForecastInteractor implements ForecastInteractor {
                     }
 
                     ForecastDataModel dataModel = new ForecastDataModel(model.getCity().getName(),
-                            model.getCity().getCountry(), listForecast);
+                            model.getCity().getCountry());
 
-                    callbacks.onGetForecastListSuccess(dataModel);
+                    ArrayList<ArrayList<ForecastDataListModel>> lists = new ArrayList<>();
+                    lists.add(listForecast);
+                    lists.add(listForecast);
+
+                    callbacks.onGetForecastListSuccess(dataModel, lists);
 
                 } else {
                     callbacks.onGetForecastListError("error");

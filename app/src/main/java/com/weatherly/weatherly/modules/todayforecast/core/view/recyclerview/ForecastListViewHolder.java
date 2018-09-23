@@ -1,4 +1,4 @@
-package com.weatherly.weatherly.modules.forecast.core.view.recyclerview;
+package com.weatherly.weatherly.modules.todayforecast.core.view.recyclerview;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

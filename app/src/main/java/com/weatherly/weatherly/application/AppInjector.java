@@ -9,6 +9,9 @@ import com.weatherly.weatherly.modules.forecast.builder.ForecastModule;
 import com.weatherly.weatherly.modules.mainscreen.MainScreenActivity;
 import com.weatherly.weatherly.modules.mainscreen.builder.DaggerMainScreenComponent;
 import com.weatherly.weatherly.modules.mainscreen.builder.MainScreenModule;
+import com.weatherly.weatherly.modules.todayforecast.TodayForecastFragment;
+import com.weatherly.weatherly.modules.todayforecast.builder.DaggerTodayForecastComponent;
+import com.weatherly.weatherly.modules.todayforecast.builder.TodayForecastModule;
 
 public class AppInjector {
     private MyApplicationComponent component;
@@ -28,11 +31,19 @@ public class AppInjector {
                 .inject(activity);
     }
 
-    public void inject(ForecastActivity activity) {
+    public void injectForecast(ForecastActivity activity) {
         DaggerForecastComponent.builder()
                 .forecastModule(new ForecastModule(activity))
                 .myApplicationComponent(component)
                 .build()
                 .inject(activity);
+    }
+
+    public void injectTodayForecast(TodayForecastFragment fragment) {
+        DaggerTodayForecastComponent.builder()
+                .todayForecastModule(new TodayForecastModule(fragment))
+                .myApplicationComponent(component)
+                .build()
+                .inject(fragment);
     }
 }

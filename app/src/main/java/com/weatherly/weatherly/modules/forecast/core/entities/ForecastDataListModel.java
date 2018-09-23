@@ -1,6 +1,8 @@
 package com.weatherly.weatherly.modules.forecast.core.entities;
 
-public class ForecastDataListModel {
+import java.io.Serializable;
+
+public class ForecastDataListModel implements Serializable {
     private String temp;
     private String date;
     private String icon;

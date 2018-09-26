@@ -19,4 +19,10 @@ public interface WeatherRequest {
                                                    @Query("units") String value,
                                                    @Query("appid") String key);
 
+    @GET("weather")
+    Call<WeatherGeneralModel> getByCoordinates(@Query("lat") String lat,
+                                                @Query("lon") String lon,
+                                                @Query("units") String value,
+                                                @Query("appid") String key);
+
 }

@@ -16,7 +16,8 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDarkDay</item>
         <item name="colorAccent">@color/colorAccentDay</item>
         <item name="android:windowTranslucentNavigation">true</item>
-        <item name="buttonTheme">@color/colorPrimaryDay</item>
+        <item name="buttonTheme">@color/colorAccentDayLight</item>
+        <item name="buttonThemeText">@color/colorPrimaryDarkDay</item>
         <item name="android:itemTextAppearance">@android:color/primary_text_light</item>
         <item name="android:textColor">@color/color_white</item>
         <item name="android:actionMenuTextColor">@android:color/primary_text_light</item>
@@ -29,7 +30,8 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDarkNight</item>
         <item name="colorAccent">@color/colorAccentNight</item>
         <item name="android:windowTranslucentNavigation">true</item>
-        <item name="buttonTheme">@color/colorPrimaryNight</item>
+        <item name="buttonTheme">@color/colorAccentNightLight</item>
+        <item name="buttonThemeText">@color/color_white</item>
         <item name="android:textColor">@color/color_white</item>
         <item name="android:actionMenuTextColor">@android:color/primary_text_light</item>
         <item name="actionMenuTextColor">@android:color/primary_text_light</item>

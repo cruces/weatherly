@@ -11,9 +11,11 @@
     <color name="colorPrimaryDay">#FD9A5D</color>
     <color name="colorPrimaryDarkDay">#FF8A34</color>
     <color name="colorAccentDay">#FBE18C</color>
+    <color name="colorAccentDayLight">#FFE7D2</color>
 
     <color name="colorPrimaryNight">#4F5869</color>
     <color name="colorPrimaryDarkNight">#41495C</color>
     <color name="colorAccentNight">#9E9E9E</color>
+    <color name="colorAccentNightLight">#9EA6B7</color>
 
 </resources>

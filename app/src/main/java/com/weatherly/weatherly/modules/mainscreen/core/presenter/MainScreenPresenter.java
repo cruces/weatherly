@@ -23,10 +23,14 @@ public class MainScreenPresenter implements MainScreenViewOutput, MainScreenInte
     }
 
     public void onCreate() {
-        interactor.getWeatherByCityName();
+        interactor.getDeviceLocation();
         view.getToolbar();
     }
 
+    @Override
+    public void onCheckPermissions(int requestCode, int[] grantResults) {
+        interactor.checkPermission(requestCode, grantResults);
+    }
 
     @Override
     public void onGetWeatherByCityNameSuccess(WeatherDataModel weather) {

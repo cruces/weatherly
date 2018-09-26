@@ -1,5 +1,7 @@
 package com.weatherly.weatherly.modules.mainscreen.builder;
 
+import android.app.Activity;
+
 import com.weatherly.weatherly.modules.mainscreen.MainScreenActivity;
 import com.weatherly.weatherly.modules.mainscreen.core.interactor.DefaultMainScreenInteractor;
 import com.weatherly.weatherly.modules.mainscreen.core.interactor.MainScreenInteractor;
@@ -30,7 +32,7 @@ public class MainScreenModule {
     @Provides
     @MainScreenScope
     public MainScreenInteractor provideMainInteractor(Retrofit retrofit) {
-        return new DefaultMainScreenInteractor(retrofit);
+        return new DefaultMainScreenInteractor(activity, retrofit);
     }
 
     @Provides

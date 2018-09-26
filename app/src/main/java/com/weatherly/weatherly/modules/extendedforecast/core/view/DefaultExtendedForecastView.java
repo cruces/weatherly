@@ -22,7 +22,7 @@ public class DefaultExtendedForecastView extends FrameLayout implements Extended
 
     public DefaultExtendedForecastView(@NonNull Context context) {
         super(context);
-        inflate(context, R.layout.fragment_today_forecast, this);
+        inflate(context, R.layout.fragment_extended_forecast, this);
 
         recyclerViewForecast = findViewById(R.id.recycler_forecast_list);
         swipeRefreshLayout = findViewById(R.id.swipe);

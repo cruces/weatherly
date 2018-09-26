@@ -1,6 +1,7 @@
 package com.weatherly.weatherly.modules.mainscreen;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 
@@ -37,5 +38,12 @@ public class MainScreenActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         view.setMainMenu(this, menu);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        presenter.onCheckPermissions(requestCode, grantResults);
     }
 }

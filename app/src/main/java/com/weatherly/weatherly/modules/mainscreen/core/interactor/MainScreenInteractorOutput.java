@@ -6,4 +6,6 @@ public interface MainScreenInteractorOutput {
     void onGetWeatherByCityNameSuccess(WeatherDataModel weather);
 
     void onGetWeatherByCityNameError(String e);
+
+    void onCheckPermissions(int requestCode, int[] grantResults);
 }

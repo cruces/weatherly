@@ -16,6 +16,8 @@ public class ForecastPresenter implements ForecastInteractorOutput, ForecastView
     private ForecastInteractor interactor;
     private ForecastView view;
     private AppCompatActivity activity;
+    private String latitude;
+    private String longitude;
 
     public ForecastPresenter(ForecastInteractor interactor, ForecastView view) {
         this.interactor = interactor;
@@ -26,7 +28,9 @@ public class ForecastPresenter implements ForecastInteractorOutput, ForecastView
 
     public void onCreate(AppCompatActivity appCompatActivity) {
         activity = appCompatActivity;
-        interactor.getForecastList();
+        latitude = activity.getIntent().getStringExtra("lat");
+        longitude = activity.getIntent().getStringExtra("lon");
+        interactor.getForecastList(latitude, longitude);
         view.setUpTabs(activity);
     }
 
@@ -48,7 +52,7 @@ public class ForecastPresenter implements ForecastInteractorOutput, ForecastView
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                interactor.getForecastList();
+                interactor.getForecastList(latitude, longitude);
             }
         }, 1000);
     }

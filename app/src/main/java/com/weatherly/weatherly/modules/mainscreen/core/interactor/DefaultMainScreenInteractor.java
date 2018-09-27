@@ -2,6 +2,7 @@ package com.weatherly.weatherly.modules.mainscreen.core.interactor;
 
 import android.Manifest;
 import android.app.Activity;
+import android.bluetooth.BluetoothClass;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Criteria;
@@ -17,6 +18,7 @@ import com.weatherly.weatherly.application.builder.MyApplicationModule;
 import com.weatherly.weatherly.modules.common.WeatherRequest;
 import com.weatherly.weatherly.modules.common.entities.WeatherGeneralModel;
 import com.weatherly.weatherly.modules.common.openweathermap.TemperatureUtils;
+import com.weatherly.weatherly.modules.mainscreen.core.entities.DeviceLocationModel;
 import com.weatherly.weatherly.modules.mainscreen.core.entities.WeatherDataModel;
 
 import retrofit2.Call;
@@ -31,6 +33,8 @@ public class DefaultMainScreenInteractor implements MainScreenInteractor {
     private Context context;
     private static final int PERMISSION_REQUEST_CODE = 200;
     private LocationManager locationManager;
+    private String latitude;
+    private String longitude;
 
     public DefaultMainScreenInteractor(Context context, Retrofit retrofit) {
         this.retrofit = retrofit;
@@ -172,9 +176,9 @@ public class DefaultMainScreenInteractor implements MainScreenInteractor {
             locationManager.requestSingleUpdate(criteria, locationListener, looper);
 
             if (location != null) {
-                double longitude = location.getLongitude();
-                double latitude = location.getLatitude();
-                getWeatherByCoordinates(Double.toString(latitude), Double.toString(longitude));
+                longitude = Double.toString(location.getLongitude());
+                latitude = Double.toString(location.getLatitude());
+                getWeatherByCoordinates(latitude, longitude);
             }
         }
 
@@ -184,5 +188,10 @@ public class DefaultMainScreenInteractor implements MainScreenInteractor {
     @Override
     public void setCallbacks(MainScreenInteractorOutput callbacks) {
         this.callbacks = callbacks;
+    }
+
+    @Override
+    public DeviceLocationModel getLocation() {
+        return new DeviceLocationModel(latitude, longitude);
     }
 }

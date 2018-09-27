@@ -28,7 +28,6 @@ public class DefaultForecastView extends FrameLayout implements ForecastView {
     private ProgressBar progressBar;
     private View overlay;
     private Context context;
-//    private SwipeRefreshLayout swipeRefreshLayout;
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private ForecastPagerAdapter adapter;

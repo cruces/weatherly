@@ -1,7 +1,5 @@
 package com.weatherly.weatherly.modules.forecast.core.interactor;
 
-import android.util.Log;
-
 import com.weatherly.weatherly.application.builder.MyApplicationModule;
 import com.weatherly.weatherly.modules.common.WeatherRequest;
 import com.weatherly.weatherly.modules.common.entities.ForecastGeneralModel;
@@ -30,8 +28,8 @@ public class DefaultForecastInteractor implements ForecastInteractor {
     }
 
     @Override
-    public void getForecastList() {
-        request.getForecastNextDays("Dublin", MyApplicationModule.UNITS,
+    public void getForecastList(String lat, String lon) {
+        request.getForecastNextDaysByCoordinates(lat, lon, MyApplicationModule.UNITS,
                 MyApplicationModule.USER_KEY).enqueue(new Callback<ForecastGeneralModel>() {
             @Override
             public void onResponse(Call<ForecastGeneralModel> call, Response<ForecastGeneralModel> response) {
@@ -41,7 +39,6 @@ public class DefaultForecastInteractor implements ForecastInteractor {
                     Calendar rightNow = Calendar.getInstance();
                     int currentDay = rightNow.get(Calendar.DAY_OF_MONTH);
 
-                    Log.d("dume", "el dia del telef " + currentDay);
                     ArrayList<ForecastDataListModel> listForecast = new ArrayList<>();
                     ArrayList<ForecastDataListModel> listForecastTomorrow = new ArrayList<>();
 
@@ -67,7 +64,6 @@ public class DefaultForecastInteractor implements ForecastInteractor {
                                     DateUtils.convertDateShortHour(dataDate)));
                         }
 
-                        Log.d("dume", "el dia de la lista " + DateUtils.getDateDay(dataDate));
                     }
 
                     ForecastDataModel dataModel = new ForecastDataModel(model.getCity().getName(),

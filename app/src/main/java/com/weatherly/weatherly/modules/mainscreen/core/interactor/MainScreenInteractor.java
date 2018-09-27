@@ -1,5 +1,7 @@
 package com.weatherly.weatherly.modules.mainscreen.core.interactor;
 
+import com.weatherly.weatherly.modules.mainscreen.core.entities.DeviceLocationModel;
+
 public interface MainScreenInteractor {
     void getWeatherByCityName();
 
@@ -10,4 +12,6 @@ public interface MainScreenInteractor {
     void checkPermission(int requestCode, int[] grantResults);
 
     void getDeviceLocation();
+
+    DeviceLocationModel getLocation();
 }

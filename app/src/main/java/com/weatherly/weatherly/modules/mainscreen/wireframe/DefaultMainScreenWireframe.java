@@ -13,8 +13,10 @@ public class DefaultMainScreenWireframe implements MainScreenWireframe {
     }
 
     @Override
-    public void openForecastScreen() {
+    public void openForecastScreen(String lat, String lon) {
         Intent intent = new Intent(activity, ForecastActivity.class);
+        intent.putExtra("lat", lat);
+        intent.putExtra("lon", lon);
         activity.startActivity(intent);
     }
 }

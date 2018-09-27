@@ -1,7 +1,5 @@
 package com.weatherly.weatherly.modules.mainscreen.builder;
 
-import android.app.Activity;
-
 import com.weatherly.weatherly.modules.mainscreen.MainScreenActivity;
 import com.weatherly.weatherly.modules.mainscreen.core.interactor.DefaultMainScreenInteractor;
 import com.weatherly.weatherly.modules.mainscreen.core.interactor.MainScreenInteractor;

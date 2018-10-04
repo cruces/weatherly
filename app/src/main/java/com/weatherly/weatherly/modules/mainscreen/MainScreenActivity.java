@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
+import android.view.MenuItem;
 
 import com.weatherly.weatherly.application.MyApplication;
 import com.weatherly.weatherly.modules.common.ThemeUtils;
@@ -45,5 +46,11 @@ public class MainScreenActivity extends AppCompatActivity {
                                            @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
         presenter.onCheckPermissions(requestCode, grantResults);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return view.getItemSelected(item);
+//        return super.onOptionsItemSelected(item);
     }
 }

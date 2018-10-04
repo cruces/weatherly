@@ -1,4 +1,4 @@
 package com.weatherly.weatherly.modules.about.core.interactor;
 
-public class DefaultAboutInteractor {
+public class DefaultAboutInteractor implements AboutInteractor {
 }

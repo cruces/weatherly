@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -117,5 +118,16 @@ public class DefaultMainScreenView extends FrameLayout implements MainScreenView
     @Override
     public void getToast(String message) {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public boolean getItemSelected(MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+            case R.id.about:
+                callbacks.onMenuItemClicked();
+                return true;
+            default:
+                return true;
+        }
     }
 }

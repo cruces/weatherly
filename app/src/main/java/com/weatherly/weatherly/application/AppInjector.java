@@ -3,6 +3,9 @@ package com.weatherly.weatherly.application;
 import com.weatherly.weatherly.application.builder.DaggerMyApplicationComponent;
 import com.weatherly.weatherly.application.builder.MyApplicationComponent;
 import com.weatherly.weatherly.application.builder.MyApplicationModule;
+import com.weatherly.weatherly.modules.about.AboutActivity;
+import com.weatherly.weatherly.modules.about.builder.AboutModule;
+import com.weatherly.weatherly.modules.about.builder.DaggerAboutComponent;
 import com.weatherly.weatherly.modules.extendedforecast.ExtendedForecastFragment;
 import com.weatherly.weatherly.modules.extendedforecast.builder.DaggerExtendedForecastComponent;
 import com.weatherly.weatherly.modules.extendedforecast.builder.ExtendedForecastModule;
@@ -45,5 +48,13 @@ public class AppInjector {
                 .myApplicationComponent(component)
                 .build()
                 .inject(fragment);
+    }
+
+    public void injectAbout(AboutActivity activity) {
+        DaggerAboutComponent.builder()
+                .aboutModule(new AboutModule(activity))
+                .myApplicationComponent(component)
+                .build()
+                .inject(activity);
     }
 }

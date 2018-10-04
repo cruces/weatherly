@@ -3,6 +3,7 @@ package com.weatherly.weatherly.modules.mainscreen.core.view;
 import android.app.Activity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.weatherly.weatherly.modules.mainscreen.core.entities.WeatherDataModel;
@@ -23,4 +24,6 @@ public interface MainScreenView {
     void setMainMenu(Activity activity, Menu menu);
 
     void getToast(String message);
+
+    boolean getItemSelected(MenuItem menuItem);
 }

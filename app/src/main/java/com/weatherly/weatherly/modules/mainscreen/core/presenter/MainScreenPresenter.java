@@ -46,8 +46,12 @@ public class MainScreenPresenter implements MainScreenViewOutput, MainScreenInte
 
     @Override
     public void onButtonClicked() {
-
         wireframe.openForecastScreen(interactor.getLocation().getLatitude(),
                 interactor.getLocation().getLongitude());
+    }
+
+    @Override
+    public void onMenuItemClicked() {
+        wireframe.openAboutScreen();
     }
 }

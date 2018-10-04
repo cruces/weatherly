@@ -2,6 +2,7 @@ package com.weatherly.weatherly.modules.mainscreen.wireframe;
 
 import android.content.Intent;
 
+import com.weatherly.weatherly.modules.about.AboutActivity;
 import com.weatherly.weatherly.modules.forecast.ForecastActivity;
 import com.weatherly.weatherly.modules.mainscreen.MainScreenActivity;
 
@@ -17,6 +18,12 @@ public class DefaultMainScreenWireframe implements MainScreenWireframe {
         Intent intent = new Intent(activity, ForecastActivity.class);
         intent.putExtra("lat", lat);
         intent.putExtra("lon", lon);
+        activity.startActivity(intent);
+    }
+
+    @Override
+    public void openAboutScreen() {
+        Intent intent = new Intent(activity, AboutActivity.class);
         activity.startActivity(intent);
     }
 }

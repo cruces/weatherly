@@ -1,5 +1,7 @@
 package com.weatherly.weatherly.modules.mainscreen.core.presenter;
 
+import android.os.Handler;
+
 import com.weatherly.weatherly.modules.mainscreen.core.entities.WeatherDataModel;
 import com.weatherly.weatherly.modules.mainscreen.core.interactor.MainScreenInteractor;
 import com.weatherly.weatherly.modules.mainscreen.core.interactor.MainScreenInteractorOutput;
@@ -53,5 +55,15 @@ public class MainScreenPresenter implements MainScreenViewOutput, MainScreenInte
     @Override
     public void onMenuItemClicked() {
         wireframe.openAboutScreen();
+    }
+
+    @Override
+    public void onSwipe() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                interactor.getDeviceLocation();
+            }
+        }, 1000);
     }
 }

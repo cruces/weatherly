@@ -4,4 +4,6 @@ public interface MainScreenViewOutput {
     void onButtonClicked();
 
     void onMenuItemClicked();
+
+    void onSwipe();
 }

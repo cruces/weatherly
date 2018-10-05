@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -35,6 +36,7 @@ public class DefaultMainScreenView extends FrameLayout implements MainScreenView
     private TextView buttonForecast;
     private ProgressBar progressBar;
     private View overlay;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     public DefaultMainScreenView(@NonNull Context context) {
         super(context);
@@ -52,6 +54,15 @@ public class DefaultMainScreenView extends FrameLayout implements MainScreenView
         buttonForecast = findViewById(R.id.button_forecast);
         progressBar = findViewById(R.id.progress_bar);
         overlay = findViewById(R.id.overlay_view);
+        swipeRefreshLayout = findViewById(R.id.swipe);
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeRefreshLayout.setRefreshing(false);
+                callbacks.onSwipe();
+            }
+        });
 
         buttonForecast.setOnClickListener(new OnClickListener() {
             @Override

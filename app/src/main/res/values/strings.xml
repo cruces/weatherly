@@ -12,5 +12,6 @@
     <string name="about_weatherly">About Weatherly</string>
     <string name="powered_by_openweathermap">Powered by OpenWeatherMap API</string>
     <string name="icon_freepik">Icons made by Those Icons from www.flaticon.com is licensed by CC 3.0 BY</string>
+    <string name="icon_launcher_freepik">Launcher icon made by Smashicons from www.flaticon.com is licensed by CC 3.0 BY</string>
     <string name="made_by">Made by Dumevi Cruces</string>
 </resources>

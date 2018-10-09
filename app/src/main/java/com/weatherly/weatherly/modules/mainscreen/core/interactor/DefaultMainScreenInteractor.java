@@ -2,7 +2,6 @@ package com.weatherly.weatherly.modules.mainscreen.core.interactor;
 
 import android.Manifest;
 import android.app.Activity;
-import android.bluetooth.BluetoothClass;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Criteria;
@@ -12,7 +11,6 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Looper;
 import android.support.v4.app.ActivityCompat;
-import android.util.Log;
 
 import com.weatherly.weatherly.application.builder.MyApplicationModule;
 import com.weatherly.weatherly.modules.common.WeatherRequest;
@@ -44,7 +42,8 @@ public class DefaultMainScreenInteractor implements MainScreenInteractor {
 
     @Override
     public void getWeatherByCityName() {
-        request.getByCityName("Dublin", MyApplicationModule.UNITS, MyApplicationModule.USER_KEY).enqueue(new Callback<WeatherGeneralModel>() {
+        request.getByCityName("Dublin", MyApplicationModule.UNITS, MyApplicationModule.USER_KEY)
+                .enqueue(new Callback<WeatherGeneralModel>() {
             @Override
             public void onResponse(Call<WeatherGeneralModel> call, Response<WeatherGeneralModel> response) {
                 if (response.body() != null) {

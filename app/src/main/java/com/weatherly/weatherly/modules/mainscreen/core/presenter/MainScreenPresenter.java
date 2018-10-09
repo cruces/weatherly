@@ -12,7 +12,6 @@ import com.weatherly.weatherly.modules.mainscreen.wireframe.MainScreenWireframe;
 public class MainScreenPresenter implements MainScreenViewOutput, MainScreenInteractorOutput {
     private MainScreenInteractor interactor;
     private MainScreenView view;
-    private WeatherDataModel weatherGeneralModel;
     private MainScreenWireframe wireframe;
 
     public MainScreenPresenter(MainScreenInteractor interactor, MainScreenView view,
@@ -36,7 +35,6 @@ public class MainScreenPresenter implements MainScreenViewOutput, MainScreenInte
 
     @Override
     public void onGetWeatherByCityNameSuccess(WeatherDataModel weather) {
-        weatherGeneralModel = weather;
         view.setUpWeather(weather);
         view.setProgressBar(false);
     }

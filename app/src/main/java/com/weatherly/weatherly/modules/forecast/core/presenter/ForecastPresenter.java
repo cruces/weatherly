@@ -49,11 +49,6 @@ public class ForecastPresenter implements ForecastInteractorOutput, ForecastView
 
     @Override
     public void onSwipeRefresh() {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                interactor.getForecastList(latitude, longitude);
-            }
-        }, 1000);
+        interactor.getForecastList(latitude, longitude);
     }
 }

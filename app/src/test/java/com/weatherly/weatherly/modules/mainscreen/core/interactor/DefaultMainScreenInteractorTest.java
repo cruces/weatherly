@@ -64,55 +64,22 @@ public class DefaultMainScreenInteractorTest {
 
     @Test
     public void checkOnGetWeatherByCityName_onFailure() {
-        // Call callback's method
-
-        interactor.getWeatherByCityName();
-
-        ArgumentCaptor retrofitCallbackCaptor = ArgumentCaptor.forClass(Callback.class);
-
-        Mockito.verify(callGeneralModelMock)
-                .enqueue((Callback<WeatherGeneralModel>) retrofitCallbackCaptor.capture());
-
-        Callback<WeatherGeneralModel> retrofitCallback =
-                (Callback<WeatherGeneralModel>) retrofitCallbackCaptor.getValue();
-
+        Callback<WeatherGeneralModel> retrofitCallback = getRetrofitCallbackGetWeatherByCityName();
         retrofitCallback.onFailure(callGeneralModelMock, Mockito.mock(Throwable.class));
-
         Mockito.verify(myCallback).onGetWeatherByCityNameError(Mockito.anyString());
     }
 
     @Test
     public void checkOnGetWeatherByCityName_onSuccessCallOnGetWeatherByCityNameError() {
-        // Call callback's method
-
-        interactor.getWeatherByCityName();
-
-        ArgumentCaptor retrofitCallbackCaptor = ArgumentCaptor.forClass(Callback.class);
-
-        Mockito.verify(callGeneralModelMock)
-                .enqueue((Callback<WeatherGeneralModel>) retrofitCallbackCaptor.capture());
-
-        Callback<WeatherGeneralModel> retrofitCallback =
-                (Callback<WeatherGeneralModel>) retrofitCallbackCaptor.getValue();
-
+        Callback<WeatherGeneralModel> retrofitCallback = getRetrofitCallbackGetWeatherByCityName();
         retrofitCallback.onResponse(callGeneralModelMock, responseWeatherGeneralModelMock);
-
         Mockito.verify(myCallback).onGetWeatherByCityNameError(Mockito.anyString());
     }
 
     @Test
     public void checkOnGetWeatherByCityName_onSuccessCallOnGetWeatherByCityNameSuccess() {
-        // Call callback's method
-
-        interactor.getWeatherByCityName();
-        ArgumentCaptor retrofitCallbackCaptor = ArgumentCaptor.forClass(Callback.class);
+        Callback<WeatherGeneralModel> retrofitCallback = getRetrofitCallbackGetWeatherByCityName();
         ArgumentCaptor weatherDataModelCaptor = ArgumentCaptor.forClass(WeatherDataModel.class);
-
-        Mockito.verify(callGeneralModelMock)
-                .enqueue((Callback<WeatherGeneralModel>) retrofitCallbackCaptor.capture());
-
-        Callback<WeatherGeneralModel> retrofitCallback =
-                (Callback<WeatherGeneralModel>) retrofitCallbackCaptor.getValue();
 
         Mockito.when(responseWeatherGeneralModelMock.body()).thenReturn(weatherGeneralModelMock);
 
@@ -161,51 +128,21 @@ public class DefaultMainScreenInteractorTest {
 
     @Test
     public void checkOnGetWeatherByCoordinates_onFailure() {
-        // Call callback's method
-
-        interactor.getWeatherByCoordinates("35", "139");
-        ArgumentCaptor retrofitCallbackCaptor = ArgumentCaptor.forClass(Callback.class);
-
-        Mockito.verify(callGeneralModelMock)
-                .enqueue((Callback<WeatherGeneralModel>) retrofitCallbackCaptor.capture());
-
-        Callback<WeatherGeneralModel> retrofitCallback =
-                (Callback<WeatherGeneralModel>) retrofitCallbackCaptor.getValue();
-
+        Callback<WeatherGeneralModel> retrofitCallback = getRetrofitCallbackGetWeatherByCoordinates();
         retrofitCallback.onFailure(callGeneralModelMock, Mockito.mock(Throwable.class));
-    }
-
-    @Test
-    public void checkOnGetWeatherByCoordinates_onSuccessCallOnGetWeatherByCityNameError() {
-        // Call callback's method
-
-        interactor.getWeatherByCoordinates("35", "139");
-        ArgumentCaptor retrofitCallbackCaptor = ArgumentCaptor.forClass(Callback.class);
-
-        Mockito.verify(callGeneralModelMock)
-                .enqueue((Callback<WeatherGeneralModel>) retrofitCallbackCaptor.capture());
-
-        Callback<WeatherGeneralModel> retrofitCallback =
-                (Callback<WeatherGeneralModel>) retrofitCallbackCaptor.getValue();
-
-        retrofitCallback.onResponse(callGeneralModelMock, responseWeatherGeneralModelMock);
-
         Mockito.verify(myCallback).onGetWeatherByCityNameError(Mockito.anyString());
     }
 
     @Test
-    public void checkOnGetWeatherByCoordinates_onSuccessCallOnGetWeatherByCityNameSuccess(){
-        // Call callback's method
+    public void checkOnGetWeatherByCoordinates_onSuccessCallOnGetWeatherByCityNameError() {
+        Callback<WeatherGeneralModel> retrofitCallback = getRetrofitCallbackGetWeatherByCoordinates();
+        retrofitCallback.onResponse(callGeneralModelMock, responseWeatherGeneralModelMock);
+        Mockito.verify(myCallback).onGetWeatherByCityNameError(Mockito.anyString());
+    }
 
-        interactor.getWeatherByCoordinates("35", "139");
-        ArgumentCaptor retrofitCallbackCaptor = ArgumentCaptor.forClass(Callback.class);
-        ArgumentCaptor weatherDataModelCaptor = ArgumentCaptor.forClass(WeatherDataModel.class);
-
-        Mockito.verify(callGeneralModelMock)
-                .enqueue((Callback<WeatherGeneralModel>) retrofitCallbackCaptor.capture());
-
-        Callback<WeatherGeneralModel> retrofitCallback =
-                (Callback<WeatherGeneralModel>) retrofitCallbackCaptor.getValue();
+    @Test
+    public void checkOnGetWeatherByCoordinates_onSuccessCallOnGetWeatherByCityNameSuccess() {
+        Callback<WeatherGeneralModel> retrofitCallback = getRetrofitCallbackGetWeatherByCoordinates();
 
         Mockito.when(responseWeatherGeneralModelMock.body()).thenReturn(weatherGeneralModelMock);
 
@@ -238,6 +175,8 @@ public class DefaultMainScreenInteractorTest {
 
         retrofitCallback.onResponse(callGeneralModelMock, responseWeatherGeneralModelMock);
 
+        ArgumentCaptor weatherDataModelCaptor = ArgumentCaptor.forClass(WeatherDataModel.class);
+
         Mockito.verify(myCallback)
                 .onGetWeatherByCityNameSuccess((WeatherDataModel) weatherDataModelCaptor.capture());
 
@@ -250,5 +189,27 @@ public class DefaultMainScreenInteractorTest {
         Truth.assertThat(dataModel.getPressure()).isEqualTo("111 hpa");
         Truth.assertThat(dataModel.getWind()).isEqualTo("600 m/s");
         Truth.assertThat(dataModel.getWeatherTemp()).isEqualTo("30");
+    }
+
+    private Callback<WeatherGeneralModel> getRetrofitCallbackGetWeatherByCoordinates() {
+        interactor.getWeatherByCoordinates("35", "139");
+
+        ArgumentCaptor retrofitCallbackCaptor = ArgumentCaptor.forClass(Callback.class);
+
+        Mockito.verify(callGeneralModelMock)
+                .enqueue((Callback<WeatherGeneralModel>) retrofitCallbackCaptor.capture());
+
+        return (Callback<WeatherGeneralModel>) retrofitCallbackCaptor.getValue();
+    }
+
+    private Callback<WeatherGeneralModel> getRetrofitCallbackGetWeatherByCityName() {
+        interactor.getWeatherByCityName();
+
+        ArgumentCaptor retrofitCallbackCaptor = ArgumentCaptor.forClass(Callback.class);
+
+        Mockito.verify(callGeneralModelMock)
+                .enqueue((Callback<WeatherGeneralModel>) retrofitCallbackCaptor.capture());
+
+        return (Callback<WeatherGeneralModel>) retrofitCallbackCaptor.getValue();
     }
 }

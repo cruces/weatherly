@@ -12,7 +12,7 @@ public class DateUtils {
         String pattern2 = "EE, dd MMM";
         SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat(pattern2);
 
-        Date date = null;
+        Date date;
         String dateOutput = "";
         try {
             date = simpleDateFormat.parse(dateString);
